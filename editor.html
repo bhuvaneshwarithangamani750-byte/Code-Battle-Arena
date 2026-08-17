@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Coding Editor - Code Battle Arena</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION BAR
+    ========================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Code Battle Arena
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="challenges.html">
+                Challenges
+            </a>
+
+            <a href="leaderboard.html">
+                Leaderboard
+            </a>
+
+            <a href="battle.html">
+                Code Battle
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         EDITOR SECTION
+    ========================== -->
+
+    <section class="editor-section">
+
+
+        <!-- =========================
+             PROBLEM BOX
+        ========================== -->
+
+        <div class="problem-box">
+
+            <h1 id="problemTitle">
+                Loading Challenge...
+            </h1>
+
+            <p id="problemDescription">
+                Loading Problem...
+            </p>
+
+            <h3>
+                Example:
+            </h3>
+
+            <p id="exampleInput">
+                Input: Loading...
+            </p>
+
+            <p id="exampleOutput">
+                Output: Loading...
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             CODE BOX
+        ========================== -->
+
+        <div class="code-box">
+
+            <!-- Editor Header -->
+
+            <div class="editor-header">
+
+                <h2>
+                    💻 Code Editor
+                </h2>
+
+                <select id="language">
+
+                    <option value="python">
+                        Python
+                    </option>
+
+                    <option value="java">
+                        Java
+                    </option>
+
+                    <option value="c">
+                        C
+                    </option>
+
+                    <option value="cpp">
+                        C++
+                    </option>
+
+                    <option value="javascript">
+                        JavaScript
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Code Area -->
+
+            <textarea
+                id="codeEditor"
+                placeholder="Write your Python code here..."></textarea>
+
+
+            <!-- =========================
+                 EDITOR BUTTONS
+            ========================== -->
+
+            <div class="editor-buttons">
+
+                <button onclick="runCode()">
+                    ▶️ Run Code
+                </button>
+
+                <button onclick="submitCode()">
+                    ✅ Submit Code
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 SCORE BOARD
+            ========================== -->
+
+            <div class="score-board">
+
+                <h3>
+                    ⭐ XP:
+                    <span id="xp">0</span>
+                </h3>
+
+                <h3>
+                    🏆 Level:
+                    <span id="level">1</span>
+                </h3>
+
+            </div>
+
+
+            <!-- =========================
+                 TIMER
+            ========================== -->
+
+            <div class="timer-box">
+
+                <h3>
+                    ⏱️ Time Left:
+                    <span id="timer">30:00</span>
+                </h3>
+
+                <div class="timer-buttons">
+
+                    <button onclick="startTimer()">
+                        ▶️ Start
+                    </button>
+
+                    <button onclick="pauseTimer()">
+                        ⏸️ Pause
+                    </button>
+
+                    <button onclick="resetTimer()">
+                        🔄 Reset
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 PROGRESS BAR
+            ========================== -->
+
+            <div class="progress-container">
+
+                <div id="progress-bar"></div>
+
+            </div>
+
+
+            <!-- =========================
+                 ACHIEVEMENT
+            ========================== -->
+
+            <div class="badge-box">
+
+                <h2>
+                    🏅 Achievement
+                </h2>
+
+                <p id="badge">
+                    🥉 Beginner
+                </p>
+
+            </div>
+
+
+            <!-- =========================
+                 RESULT
+            ========================= -->
+
+            <div id="result">
+                Result will appear here...
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

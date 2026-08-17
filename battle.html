@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Code Battle Arena</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="challenges.html">
+            Challenges
+        </a>
+
+        <a href="leaderboard.html">
+            Leaderboard
+        </a>
+
+        <a href="battle.html">
+            Code Battle
+        </a>
+
+    </nav>
+
+
+    <!-- MAIN BATTLE -->
+
+    <main class="battle-page">
+
+        <h1>
+            ⚔️ Code Battle Arena
+        </h1>
+
+
+        <!-- CHALLENGE SELECTOR -->
+
+        <section class="challenge-selector">
+
+            <label for="battleChallenge">
+                🎯 Choose Challenge:
+            </label>
+
+            <select id="battleChallenge">
+
+                <option value="0">
+                    🟢 Two Sum — Easy — 100 XP
+                </option>
+
+                <option value="1">
+                    🟢 Reverse String — Easy — 100 XP
+                </option>
+
+                <option value="2">
+                    🟡 Find Maximum Number — Medium — 200 XP
+                </option>
+
+                <option value="3">
+                    🟡 Palindrome Check — Medium — 200 XP
+                </option>
+
+                <option value="4">
+                    🔴 Find Duplicate Number — Hard — 300 XP
+                </option>
+
+            </select>
+
+            <br><br>
+
+
+            <!-- LANGUAGE SELECTOR -->
+
+            <label for="languageSelect">
+                💻 Choose Language:
+            </label>
+
+            <select id="languageSelect">
+
+                <option value="javascript">
+                    🟨 JavaScript
+                </option>
+
+                <option value="python">
+                    🐍 Python
+                </option>
+
+                <option value="java">
+                    ☕ Java
+                </option>
+
+                <option value="cpp">
+                    ⚡ C++
+                </option>
+
+                <option value="c">
+                    🔵 C
+                </option>
+
+            </select>
+
+            <br><br>
+
+
+            <!-- LANGUAGE SELECT DOES NOT START BATTLE -->
+
+            <button onclick="startSelectedBattle()">
+                ⚔️ Start Selected Battle
+            </button>
+
+        </section>
+
+
+        <!-- BATTLE STATUS -->
+
+        <section class="battle-status">
+
+
+            <!-- YOU -->
+
+            <div class="player-card">
+
+                <h2>
+                    👤 You
+                </h2>
+
+                <p>
+                    ⭐ Score:
+                    <span id="playerScore">0</span>
+                </p>
+
+                <div class="health-container">
+
+                    <p>
+                        ❤️ Health:
+                        <span id="playerHealthText">
+                            100%
+                        </span>
+                    </p>
+
+                    <div class="health-bar">
+
+                        <div
+                            id="playerHealth"
+                            class="health-fill">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- VS -->
+
+            <div class="vs">
+                VS
+            </div>
+
+
+            <!-- OPPONENT -->
+
+            <div class="player-card">
+
+                <h2>
+                    🤖 Opponent
+                </h2>
+
+                <p>
+                    ⭐ Score:
+                    <span id="opponentScore">0</span>
+                </p>
+
+                <div class="health-container">
+
+                    <p>
+                        ❤️ Health:
+                        <span id="opponentHealthText">
+                            100%
+                        </span>
+                    </p>
+
+                    <div class="health-bar">
+
+                        <div
+                            id="opponentHealth"
+                            class="health-fill">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TIMER -->
+
+        <section class="battle-timer">
+
+            <h2>
+                ⏰ Time:
+                <span id="battleTimer">60</span>s
+            </h2>
+
+        </section>
+
+
+        <!-- BATTLE STREAK -->
+
+        <section class="battle-streak">
+
+            <h2>
+                🔥 Battle Streak
+            </h2>
+
+            <p>
+                Win Streak:
+                <strong id="winStreakDisplay">
+                    0
+                </strong>
+            </p>
+
+            <p>
+                🏅 Badge:
+                <strong id="streakBadge">
+                    🥉 Beginner
+                </strong>
+            </p>
+
+        </section>
+
+
+        <!-- QUESTION -->
+
+        <section class="battle-question">
+
+            <h2 id="battleTitle">
+                Choose a Challenge
+            </h2>
+
+            <p id="battleQuestion">
+                Select a challenge and click
+                "Start Selected Battle".
+            </p>
+
+        </section>
+
+
+        <!-- CODE EDITOR -->
+
+        <section class="code-section">
+
+            <h2>
+                💻 Code Editor
+            </h2>
+
+
+            <textarea
+                id="battleCode"
+                placeholder="Write your code here..."></textarea>
+
+
+            <div class="battle-buttons">
+
+                <button onclick="runBattleCode()">
+                    ▶️ Run Code
+                </button>
+
+                <button onclick="submitBattle()">
+                    ⚔️ Submit Solution
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- TEST CASE RESULT -->
+
+        <section class="test-section">
+
+            <h2>
+                🧪 Test Cases
+            </h2>
+
+            <div id="testCaseResult">
+                Test cases will appear here...
+            </div>
+
+        </section>
+
+
+        <!-- PLAY AGAIN -->
+
+        <section class="play-again-section">
+
+            <button onclick="playAgain()">
+                🔄 Play Again
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- SCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Leaderboard - Code Battle Arena</title>
+
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+<!-- ==========================================
+     NAVIGATION
+========================================== -->
+
+<nav class="navbar">
+
+
+<div class="logo">
+    Code Battle Arena
+</div>
+
+<div class="nav-links">
+
+    <a href="index.html">Home</a>
+
+    <a href="challenges.html">Challenges</a>
+
+    <a href="leaderboard.html">Leaderboard</a>
+
+    <a href="battle.html">Code Battle</a>
+
+    <a href="#" class="login-btn">Login</a>
+
+</div>
+
+
+</nav>
+
+<!-- ==========================================
+     LEADERBOARD
+========================================== -->
+
+<section class="leaderboard-section">
+
+
+<h1>🏆 Leaderboard</h1>
+
+<p>
+    Compete with other programmers and climb to the top!
+</p>
+
+
+<div class="leaderboard-container">
+
+    <table class="leaderboard-table">
+
+        <thead>
+
+            <tr>
+
+                <th>Rank</th>
+                <th>Player</th>
+                <th>XP</th>
+                <th>Level</th>
+                <th>Badge</th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody id="leaderboardBody">
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+</section>
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer>
+
+
+<p>
+    2026 Code Battle Arena | Learn. Code. Compete.
+</p>
+
+
+</footer>
+
+<!-- ==========================================
+     LEADERBOARD SCRIPT
+========================================== -->
+
+<script>
+
+function getLevel(xp) {
+
+    if (xp >= 1000) {
+        return "Level 3";
+    }
+
+    if (xp >= 500) {
+        return "Level 2";
+    }
+
+    return "Level 1";
+}
+
+
+function getBadge(xp) {
+
+    if (xp >= 1000) {
+        return "🔥 Pro Coder";
+    }
+
+    if (xp >= 500) {
+        return "🥈 Intermediate";
+    }
+
+    return "🥉 Beginner";
+}
+
+
+function updateLeaderboard() {
+
+    // Get YOUR latest XP
+
+    const yourXP =
+        Number(localStorage.getItem("playerXP")) || 0;
+
+
+    // Other players
+
+    const players = [
+
+        {
+            name: "Pro Coder",
+            xp: 900
+        },
+
+        {
+            name: "Code Master",
+            xp: 700
+        },
+
+        {
+            name: "You",
+            xp: yourXP
+        },
+
+        {
+            name: "Java Expert",
+            xp: 500
+        },
+
+        {
+            name: "Python Pro",
+            xp: 300
+        }
+
+    ];
+
+
+    // Highest XP first
+
+    players.sort(function(a, b) {
+
+        return b.xp - a.xp;
+
+    });
+
+
+    const tbody =
+        document.getElementById("leaderboardBody");
+
+
+    tbody.innerHTML = "";
+
+
+    // Create rows
+
+    players.forEach(function(player, index) {
+
+
+        let rank;
+
+
+        if (index === 0) {
+
+            rank = "🥇 1";
+
+        }
+
+        else if (index === 1) {
+
+            rank = "🥈 2";
+
+        }
+
+        else if (index === 2) {
+
+            rank = "🥉 3";
+
+        }
+
+        else {
+
+            rank = index + 1;
+
+        }
+
+
+        const row =
+            document.createElement("tr");
+
+
+        // Highlight You
+
+        if (player.name === "You") {
+
+            row.classList.add("current-player");
+
+        }
+
+
+        row.innerHTML = `
+
+            <td class="rank">
+                ${rank}
+            </td>
+
+            <td class="player-name">
+                ${player.name}
+            </td>
+
+            <td class="xp-value">
+                ${player.xp} XP
+            </td>
+
+            <td class="level-value">
+                ${getLevel(player.xp)}
+            </td>
+
+            <td>
+                ${getBadge(player.xp)}
+            </td>
+
+        `;
+
+
+        tbody.appendChild(row);
+
+    });
+
+}
+
+
+// Load leaderboard
+
+window.addEventListener(
+    "DOMContentLoaded",
+    updateLeaderboard
+);
+
+
+// Update if XP changes
+
+window.addEventListener(
+    "storage",
+    function(event) {
+
+        if (event.key === "playerXP") {
+
+            updateLeaderboard();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
